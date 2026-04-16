@@ -1,25 +1,29 @@
 import React, { useState } from "react";
 
-const AddField = ({obj,setObj}) => {
+const AddField = ({index,obj,setObj}) => {
 
     
     let [one, setOne] = useState('')
-    let [two, setTwo] = useState('')
+    let [two, setTwo] = useState()
 
     function handleChange(name,age){
-        setObj([...obj, { name, age }])
+        let obz = [...obj]
+        obz[index] = {name, age} // name : name , age
+        setObj(obz)
     }
 
     
     return (
         <div>
             <input name="name" onChange={(e) => {
-                setOne(e.target.value)
+                let val = e.target.value
+                setOne(val)
                 handleChange(one,two)
             }} type="text"></input>
             <input name="age" onChange={(e) => {
-                setTwo(e.target.value)
-                handleChange(one,two)
+                let val = e.target.value
+                setTwo(val)
+                handleChange(one,val)
             }} type="number"></input>
             <button onClick={(e) => e.target.parentElement.remove()}>Remove</button>
         </div>

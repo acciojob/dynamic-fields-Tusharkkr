@@ -4,10 +4,11 @@ import AddField from "./AddField";
 const FormField = () => {
 
     let [arr,setArr] = useState([])
-    let [obj, setObj] = useState([])
+    let [obj, setObj] = useState([{ name: "", age: "" }]);
 
     function handleAddClick(){
-        setArr([...arr,<AddField obj={obj} setObj={setObj}/>])
+        setArr([...arr,<AddField index={arr.length+1} obj={obj} setObj={setObj}/>])
+        setObj([...obj, { name: "", age: "" }]);
     }
 
     function handleSubmit(){
@@ -17,13 +18,13 @@ const FormField = () => {
   return (
     <div>
         <form>
-            <AddField obj={obj} setObj={setObj}/>
+            <AddField index={0} obj={obj} setObj={setObj}/>
             {arr.map(value=>(
                 value
             ))}
         </form>
         <button onClick={handleAddClick}>Add More..</button>
-        <button onClick={handleSubmit}>Submit</button>
+        <button type="submit" onClick={handleSubmit}>Submit</button>
     </div>
   )
 }
