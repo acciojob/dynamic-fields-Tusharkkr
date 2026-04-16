@@ -13,11 +13,11 @@ const AddField = ({obj,setObj}) => {
     
     return (
         <div>
-            <input onChange={(e) => {
+            <input name="name" onChange={(e) => {
                 setOne(e.target.value)
                 handleChange(one,two)
             }} type="text"></input>
-            <input onChange={(e) => {
+            <input name="age" onChange={(e) => {
                 setTwo(e.target.value)
                 handleChange(one,two)
             }} type="number"></input>
