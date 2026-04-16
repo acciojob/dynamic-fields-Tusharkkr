@@ -3,30 +3,33 @@ import AddField from "./AddField";
 
 const FormField = () => {
 
-    let [arr,setArr] = useState([])
+    let [arr, setArr] = useState([]);
     let [obj, setObj] = useState([{ name: "", age: "" }]);
 
-    function handleAddClick(){
-        setArr([...arr,<AddField index={arr.length+1} obj={obj} setObj={setObj}/>])
+    function handleAddClick() {
+        setArr([...arr, <AddField index={arr.length + 1} obj={obj} setObj={setObj} />]);
         setObj([...obj, { name: "", age: "" }]);
     }
 
-    function handleSubmit(){
-        console.log(obj)
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(obj);
     }
 
-  return (
-    <div>
-        <form>
-            <AddField index={0} obj={obj} setObj={setObj}/>
-            {arr.map(value=>(
-                value
-            ))}
-        </form>
-        <button onClick={handleAddClick}>Add More..</button>
-        <button type="submit" onClick={handleSubmit}>Submit</button>
-    </div>
-  )
-}
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <AddField index={0} obj={obj} setObj={setObj} />
 
-export default FormField
+                {arr.map((value, index) => (
+                    <div key={index}>{value}</div>
+                ))}
+            </form>
+
+            <button onClick={handleAddClick}>Add More..</button>
+            <button onClick={handleSubmit}>Submit</button>
+        </div>
+    );
+};
+
+export default FormField;
