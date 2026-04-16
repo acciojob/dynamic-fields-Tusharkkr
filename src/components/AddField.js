@@ -14,6 +14,7 @@ const AddField = ({ obj, setObj, index }) => {
     return (
         <div>
             <input
+                name="name"
                 type="text"
                 onChange={(e) => {
                     const val = e.target.value;
@@ -23,6 +24,7 @@ const AddField = ({ obj, setObj, index }) => {
             />
 
             <input
+                name="age"
                 type="number"
                 onChange={(e) => {
                     const val = e.target.value;
